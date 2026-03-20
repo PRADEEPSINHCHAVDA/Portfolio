@@ -121,6 +121,23 @@
   line-height: 1.65;
   margin-bottom: 1.2rem;
 }
+/* Tech tags */
+.projects__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.1rem;
+}
+.projects__tag {
+  font-size: 0.7rem;
+  font-weight: var(--font-medium);
+  padding: 0.25rem 0.65rem;
+  border-radius: 99px;
+  background: var(--accent-light);
+  color: var(--accent-color);
+  letter-spacing: 0.3px;
+}
+
 .projects__card-btn {
   font-size: var(--small-font-size);
   padding: 0.75rem 1.4rem;

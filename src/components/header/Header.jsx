@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import "./header.css";
-const Header = () => {
 
+const sections = ['home', 'about', 'skills', 'qualification', 'projects', 'contact'];
+
+const Header = () => {
+  // ── Scroll-shadow ──
   useEffect(() => {
     const handleScroll = () => {
       const header = document.querySelector(".header");
@@ -12,8 +15,38 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const [Toggle, showMenu] = useState(false);
+  // ── Scroll-based active nav ──
   const [activeNav, setActiveNav] = useState("#home");
+  useEffect(() => {
+    const observers = sections.map(id => {
+      const el = document.getElementById(id);
+      if (!el) return null;
+      const observer = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActiveNav(`#${id}`); },
+        { threshold: 0.4 }
+      );
+      observer.observe(el);
+      return observer;
+    });
+    return () => observers.forEach(o => o && o.disconnect());
+  }, []);
+
+  // ── Dark mode ──
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem('theme') === 'dark';
+  });
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add('dark-theme');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.body.classList.remove('dark-theme');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [darkMode]);
+
+  // ── Mobile menu ──
+  const [Toggle, showMenu] = useState(false);
 
   return (
     <header className='header'>
@@ -22,63 +55,45 @@ const Header = () => {
 
         <div className={Toggle ? "nav__menu show-menu" : "nav__menu"}>
           <ul className='nav__list grid'>
-            <li className='nav__item'>
-              <a href="#home"
-                onClick={() => setActiveNav('#home')}
-                className={activeNav === "#home" ? "nav__link active-link" : "nav__link"}
-              >
-                <i className='uil uil-estate nav__icon'></i>Home
-              </a>
-            </li>
-            <li className='nav__item'>
-              <a href="#about"
-                onClick={() => setActiveNav('#about')}
-                className={activeNav === "#about" ? "nav__link active-link" : "nav__link"}
-              >
-                <i className='uil uil-user nav__icon'></i>About
-              </a>
-            </li>
-            <li className='nav__item'>
-              <a href="#skills"
-                onClick={() => setActiveNav('#skills')}
-                className={activeNav === "#skills" ? "nav__link active-link" : "nav__link"}
-              >
-                <i className='uil uil-file-alt nav__icon'></i>Skills
-              </a>
-            </li>
-            <li className='nav__item'>
-              <a href="#qualification"
-                onClick={() => setActiveNav('#qualification')}
-                className={activeNav === "#qualification" ? "nav__link active-link" : "nav__link"}
-              >
-                <i className='uil uil-scenery nav__icon'></i>Journey
-              </a>
-            </li>
-            <li className='nav__item'>
-              <a href="#projects"
-                onClick={() => setActiveNav('#projects')}
-                className={activeNav === "#projects" ? "nav__link active-link" : "nav__link"}
-              >
-                <i className='uil uil-briefcase-alt nav__icon'></i>Projects
-              </a>
-            </li>
-            <li className='nav__item'>
-              <a href="#contact"
-                onClick={() => setActiveNav('#contact')}
-                className={activeNav === "#contact" ? "nav__link active-link" : "nav__link"}
-              >
-                <i className='uil uil-message nav__icon'></i>Contact
-              </a>
-            </li>
+            {[
+              { href: '#home',          icon: 'uil-estate',        label: 'Home' },
+              { href: '#about',         icon: 'uil-user',          label: 'About' },
+              { href: '#skills',        icon: 'uil-file-alt',      label: 'Skills' },
+              { href: '#qualification', icon: 'uil-scenery',       label: 'Journey' },
+              { href: '#projects',      icon: 'uil-briefcase-alt', label: 'Projects' },
+              { href: '#contact',       icon: 'uil-message',       label: 'Contact' },
+            ].map(({ href, icon, label }) => (
+              <li className='nav__item' key={href}>
+                <a
+                  href={href}
+                  onClick={() => { setActiveNav(href); showMenu(false); }}
+                  className={activeNav === href ? "nav__link active-link" : "nav__link"}
+                >
+                  <i className={`uil ${icon} nav__icon`}></i>{label}
+                </a>
+              </li>
+            ))}
           </ul>
-          <i className="uil uil-times nav__close" onClick={() => showMenu(!Toggle)}></i>
+          <i className="uil uil-times nav__close" onClick={() => showMenu(false)}></i>
         </div>
-        <div className="nav__toggle" onClick={() => showMenu(!Toggle)}>
-          <i className="uil uil-apps"></i>
+
+        <div className="nav__actions">
+          {/* Dark mode toggle */}
+          <button
+            className="nav__theme-toggle"
+            onClick={() => setDarkMode(d => !d)}
+            aria-label="Toggle dark mode"
+          >
+            <i className={`bx ${darkMode ? 'bx-sun' : 'bx-moon'}`}></i>
+          </button>
+
+          <div className="nav__toggle" onClick={() => showMenu(!Toggle)}>
+            <i className="uil uil-apps"></i>
+          </div>
         </div>
       </nav>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

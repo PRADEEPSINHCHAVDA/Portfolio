@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import CV from '../assets/CV_PC.pdf'
 
 const roles = ['Full-Stack Developer', 'Cloud Enthusiast', 'Problem Solver'];
 
@@ -65,6 +66,7 @@ const Data = () => {
       <p className="home__description">
         I'm a full-stack developer passionate about building my vision of the digital world from the ground up. From design to deployment, I tackle real-world problems with creativity and purpose.
       </p>
+      <div className="home__buttons">
       <a href="#contact" className="button button--flex">
         Say hello
         <svg
@@ -79,6 +81,12 @@ const Data = () => {
           <path d="M10.11 14.7052C9.92005 14.7052 9.73005 14.6352 9.58005 14.4852C9.29005 14.1952 9.29005 13.7152 9.58005 13.4252L13.16 9.83518C13.45 9.54518 13.93 9.54518 14.22 9.83518C14.51 10.1252 14.51 10.6052 14.22 10.8952L10.64 14.4852C10.5 14.6352 10.3 14.7052 10.11 14.7052Z" fill="white"></path>
         </svg>
       </a>
+
+      <a download href={CV} className="button button--flex button--outline">
+        Download CV
+        <i className="bx bx-download button__icon"></i>
+      </a>
+      </div>
     </div>
   )
 }

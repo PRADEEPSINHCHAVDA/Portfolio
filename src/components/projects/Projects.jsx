@@ -16,7 +16,8 @@ const projectsData = [
     img: Work1,
     title: 'Classroom Manager',
     category: 'Web',
-    description: 'A web app to manage students in a class built with Spring Boot backend and Angular frontend.',
+    description: 'A web app to manage students in a class with Spring Boot backend and Angular frontend.',
+    tech: ['Angular', 'Spring Boot', 'MySQL'],
     github: 'https://github.com/PRADEEPSINHCHAVDA',
     demo: '',
   },
@@ -26,6 +27,7 @@ const projectsData = [
     title: 'E-Commerce Platform',
     category: 'Web',
     description: 'Full-stack e-commerce application with product listings, cart, and payment integration.',
+    tech: ['React', 'Node.js', 'MongoDB'],
     github: 'https://github.com/PRADEEPSINHCHAVDA',
     demo: '',
   },
@@ -35,6 +37,7 @@ const projectsData = [
     title: 'Cloud Dashboard',
     category: 'Cloud',
     description: 'AWS-based cloud monitoring dashboard with real-time metrics and alerting system.',
+    tech: ['AWS', 'Python', 'React'],
     github: 'https://github.com/PRADEEPSINHCHAVDA',
     demo: '',
   },
@@ -44,6 +47,7 @@ const projectsData = [
     title: 'Flutter Mobile App',
     category: 'Mobile',
     description: 'Cross-platform mobile application built with Flutter for Android and iOS.',
+    tech: ['Flutter', 'Dart', 'Firebase'],
     github: 'https://github.com/PRADEEPSINHCHAVDA',
     demo: '',
   },
@@ -53,6 +57,7 @@ const projectsData = [
     title: 'Portfolio Website',
     category: 'Web',
     description: 'Personal portfolio site built with React showcasing skills, experience and projects.',
+    tech: ['React', 'CSS3', 'EmailJS'],
     github: 'https://github.com/PRADEEPSINHCHAVDA',
     demo: 'https://pradeepsinh-portfolio.vercel.app/',
   },
@@ -71,7 +76,6 @@ const Projects = () => {
       <h2 className="section__title">Projects</h2>
       <span className="section__subtitle">Most Recent Work</span>
 
-      {/* Filter tabs */}
       <div ref={titleRef} className="projects__filters reveal">
         {categories.map(cat => (
           <button
@@ -84,17 +88,14 @@ const Projects = () => {
         ))}
       </div>
 
-      {/* Cards grid */}
       <div className="projects__container container grid">
-        {filtered.map(({ id, img, title, description, github, demo }) => (
-          <ProjectCard key={id} img={img} title={title} description={description} github={github} demo={demo} />
-        ))}
+        {filtered.map(p => <ProjectCard key={p.id} {...p} />)}
       </div>
     </section>
   );
 };
 
-const ProjectCard = ({ img, title, description, github, demo }) => {
+const ProjectCard = ({ img, title, description, tech, github, demo }) => {
   const ref = useScrollReveal();
   return (
     <div ref={ref} className="projects__card reveal">
@@ -113,11 +114,18 @@ const ProjectCard = ({ img, title, description, github, demo }) => {
           </div>
         </div>
       </div>
+
       <div className="projects__card-body">
         <h3 className="projects__card-title">{title}</h3>
         <p className="projects__card-desc">{description}</p>
+
+        {/* Tech tags */}
+        <div className="projects__tags">
+          {tech.map(t => <span key={t} className="projects__tag">{t}</span>)}
+        </div>
+
         <a href={github} target="_blank" rel="noreferrer" className="projects__card-btn button button--flex">
-          GitHub Repository <i className="bx bx-right-arrow-alt button__icon"></i>
+          GitHub <i className="bx bxl-github button__icon"></i>
         </a>
       </div>
     </div>
