@@ -1,124 +1,114 @@
-/* ===== Skills Layout ===== */
+/* ===== Skills Container ===== */
 .skills__container {
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 860px;
   margin: 0 auto;
 }
 
-/* ===== Card ===== */
-.skills__card {
+/* ===== Group card ===== */
+.skills__group {
   background: var(--container-color);
   border: 1.5px solid rgba(99, 73, 233, 0.1);
   border-radius: var(--radius-lg);
-  padding: 2rem 1.75rem;
+  padding: 1.4rem 1.75rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
   box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.3s, border-color 0.3s;
+  transition: box-shadow 0.3s, border-color 0.3s, transform 0.3s;
 }
-.skills__card:hover {
+.skills__group:hover {
   box-shadow: var(--shadow-md);
   border-color: rgba(99, 73, 233, 0.25);
+  transform: translateX(4px);
 }
 
-.skills__card-title {
-  font-size: var(--h3-font-size);
-  font-weight: var(--font-semi-bold);
-  text-align: center;
-  margin-bottom: 1.75rem;
+/* Icon column */
+.skills__group-header {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  color: var(--title-color);
+  gap: 0.4rem;
+  min-width: 68px;
+  padding-top: 0.15rem;
 }
-.skills__card-icon {
-  font-size: 1.4rem;
+.skills__group-icon {
+  font-size: 1.6rem;
   background: var(--gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  line-height: 1;
+}
+.skills__group-title {
+  font-size: 0.65rem;
+  font-weight: var(--font-semi-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--accent-color);
+  text-align: center;
+  white-space: nowrap;
 }
 
-/* ===== Rings grid ===== */
-.skills__rings {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem 0.5rem;
-  justify-items: center;
+/* Divider between icon col and tags */
+.skills__group::before {
+  content: '';
+  width: 1px;
+  min-height: 100%;
+  background: linear-gradient(to bottom, transparent, rgba(99, 73, 233, 0.25), transparent);
+  flex-shrink: 0;
 }
 
-/* ===== Individual ring ===== */
-.skill-ring {
+/* Tags */
+.skills__tags {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.45rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-content: flex-start;
 }
-
-.skill-ring__svg {
-  width: 90px;
-  height: 90px;
-  overflow: visible;
-}
-
-/* Track (background circle) */
-.skill-ring__track {
-  fill: none;
-  stroke: var(--accent-light);
-  stroke-width: 6;
-}
-
-/* Animated fill */
-.skill-ring__fill {
-  fill: none;
-  stroke-width: 6;
-  stroke-linecap: round;
-  stroke-dasharray: var(--circ);
-  stroke-dashoffset: var(--circ);   /* starts empty */
-  transform: rotate(-90deg);
-  transform-origin: center;
-  transition: stroke-dashoffset 1.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Trigger animation when scroll-reveal fires */
-.skill-ring.visible .skill-ring__fill {
-  stroke-dashoffset: var(--offset);
-}
-
-/* Percentage label inside circle */
-.skill-ring__pct {
-  font-size: 0.72rem;
-  font-weight: 700;
-  fill: var(--title-color);
-  font-family: var(--body-font);
-}
-
-/* Skill name below ring */
-.skill-ring__name {
+.skills__tag {
   font-size: var(--smaller-font-size);
   font-weight: var(--font-medium);
-  color: var(--text-color);
-  text-align: center;
+  padding: 0.35rem 0.85rem;
+  border-radius: 99px;
+  background: var(--accent-light);
+  color: var(--accent-color);
+  border: 1px solid rgba(99, 73, 233, 0.15);
+  transition: background 0.25s, color 0.25s, transform 0.25s, box-shadow 0.25s;
+  cursor: default;
+}
+.skills__tag:hover {
+  background: var(--gradient);
+  color: #fff;
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(99, 73, 233, 0.3);
 }
 
 /* ===== Responsive ===== */
-@media screen and (max-width: 992px) {
-  .skills__container {
-    grid-template-columns: 1fr;
-    max-width: 500px;
+@media screen and (max-width: 768px) {
+  .skills__group {
+    flex-direction: column;
+    gap: 0.85rem;
+    padding: 1.2rem;
+  }
+  .skills__group::before {
+    display: none;
+  }
+  .skills__group-header {
+    flex-direction: row;
+    min-width: unset;
+  }
+  .skills__group-title {
+    font-size: 0.7rem;
   }
 }
 
-@media screen and (max-width: 576px) {
-  .skills__rings {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem 0.25rem;
-  }
-  .skill-ring__svg {
-    width: 76px;
-    height: 76px;
-  }
-  .skills__card {
-    padding: 1.5rem 1rem;
+@media screen and (max-width: 350px) {
+  .skills__tag {
+    font-size: var(--tiny-font-size);
+    padding: 0.3rem 0.65rem;
   }
 }

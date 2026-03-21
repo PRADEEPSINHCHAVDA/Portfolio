@@ -6,6 +6,7 @@ import Home from './home/Home';
 import About from './components/about/About';
 import Skills from './components/skills/Skills';
 import Qualification from './components/qualification/Qualification';
+import Certifications from './components/certifications/Certifications';
 import Projects from './components/projects/Projects';
 import Contact from './components/contact/Contact';
 import Footer from './components/footer/Footer';
@@ -31,6 +32,8 @@ function App() {
         <WaveDivider fill="var(--body-color)" bg="var(--container-color)" />
         <Skills />
         <WaveDivider fill="var(--container-color)" />
+        <Certifications />
+        <WaveDivider fill="var(--body-color)" bg="var(--container-color)" />
         <Qualification />
         <WaveDivider fill="var(--body-color)" bg="var(--container-color)" />
         <Projects />
