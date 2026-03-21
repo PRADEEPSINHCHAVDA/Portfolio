@@ -24,7 +24,7 @@ const certs = [
     subtitle: 'Cloud Architecting',
     issuer: 'AWS Academy',
     date: 'Issued Dec 8, 2025',
-    badge: 'https://images.credly.com/size/340x340/images/519a6dfe-f0e3-4b99-ba6b-bfe6c6b1b5ae/image.png',
+    badge: 'https://images.credly.com/images/fcafd0c9-42da-4703-a191-0c397203dc1b/blob',
     verify: 'https://www.credly.com/org/amazon-web-services/badge/aws-academy-graduate-aws-academy-cloud-architecting',
   },
   {
@@ -32,7 +32,7 @@ const certs = [
     subtitle: 'Cloud Data Pipeline Builder',
     issuer: 'AWS Academy',
     date: 'Issued Oct 29, 2025',
-    badge: 'https://images.credly.com/size/340x340/images/44994cda-b9b4-48d0-b38e-537a74ab6f83/image.png',
+    badge: 'https://images.credly.com/images/43f26cf1-0b54-41a3-9fa5-3d2f02fa5040/blob',
     verify: 'https://www.credly.com/org/amazon-web-services/badge/aws-academy-graduate-aws-academy-cloud-data-pipeline-builder',
   },
   {
@@ -40,7 +40,7 @@ const certs = [
     subtitle: 'Microservices & CI/CD Pipeline',
     issuer: 'AWS Academy',
     date: 'Issued Oct 30, 2025',
-    badge: 'https://images.credly.com/size/340x340/images/0a6d331e-8abf-4272-a949-33f754569a76/image.png',
+    badge: 'https://images.credly.com/images/6ff76b93-852c-4f9e-a73a-fc10424a1007/blob',
     verify: 'https://www.credly.com/org/amazon-web-services/badge/aws-academy-graduate-microservices-and-ci-cd-pipeline-builder',
   },
   {
@@ -48,7 +48,7 @@ const certs = [
     subtitle: 'Networking Core',
     issuer: 'Amazon Web Services',
     date: 'Issued Nov 7, 2025',
-    badge: 'https://images.credly.com/size/340x340/images/e75f222d-959a-496d-8f60-7d714d4ce977/image.png',
+    badge: 'https://images.credly.com/images/e1c202b1-bca1-469a-9149-127b4fe891d7/blob',
     verify: 'https://www.credly.com/org/amazon-web-services/badge/aws-knowledge-networking-core',
   },
   {
@@ -56,7 +56,7 @@ const certs = [
     subtitle: 'LFS169',
     issuer: 'The Linux Foundation',
     date: 'Issued Oct 4, 2025',
-    badge: 'https://images.credly.com/size/340x340/images/acb4f091-8a7a-4c3f-8e65-78c79b7aa3e6/image.png',
+    badge: 'https://images.credly.com/images/032a65da-a036-4d05-ad80-8fc1274363ab/blob',
     verify: 'https://www.credly.com/org/the-linux-foundation/badge/lfs169-introduction-to-gitops',
   },
 ];
