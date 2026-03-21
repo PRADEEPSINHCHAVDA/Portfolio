@@ -1,34 +1,41 @@
 import React, { useRef, useState } from 'react';
-import emailjs from '@emailjs/browser';
 import "./contact.css";
 import useScrollReveal from '../../hooks/useScrollReveal';
 
 const Contact = () => {
   const form = useRef();
-  const [sent, setSent] = useState(false);
-  const [sending, setSending] = useState(false);
+  const [status, setStatus] = useState('idle'); // idle | sending | sent | error
 
   const infoRef = useScrollReveal();
   const formRef = useScrollReveal();
 
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
-    setSending(true);
+    setStatus('sending');
 
-    emailjs
-      .sendForm('service_il14pg4', 'template_7no9ss4', form.current, {
-        publicKey: 'EJGPd7OXN-3R3exxY',
-      })
-      .then(
-        () => {
-          setSent(true);
-          setSending(false);
-          form.current.reset();
-        },
-        () => {
-          setSending(false);
-        },
-      );
+    const data = new FormData(form.current);
+    data.append('access_key', '019e7c03-62a0-44a5-921e-1db04a12515e');
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: data,
+      });
+      const json = await res.json();
+      if (json.success) {
+        setStatus('sent');
+        form.current.reset();
+        setTimeout(() => setStatus('idle'), 4000);
+      } else {
+        console.error('Web3Forms error:', json);
+        setStatus('error');
+        setTimeout(() => setStatus('idle'), 4000);
+      }
+    } catch (err) {
+      console.error('Network error:', err);
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 4000);
+    }
   };
 
   return (
@@ -84,9 +91,9 @@ const Contact = () => {
               <label className="contact__form-tag">Message</label>
               <textarea name="project" className='contact__form-input' placeholder='Tell me about your project' required></textarea>
             </div>
-            <button className="button button--flex" disabled={sending}>
-              {sent ? 'Message Sent!' : sending ? 'Sending…' : 'Send Message'}
-              {!sent && (
+            <button className="button button--flex" disabled={status === 'sending'}>
+              {status === 'sent' ? '✓ Message Sent!' : status === 'error' ? '✕ Failed, try again' : status === 'sending' ? 'Sending…' : 'Send Message'}
+              {status === 'idle' && (
                 <svg className="button__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                   <path d="M14.2199 21.9352C13.0399 21.9352 11.3699 21.1052 10.0499 17.1352L9.32988 14.9752L7.16988 14.2552C3.20988 12.9352 2.37988 11.2652 2.37988 10.0852C2.37988 8.91525 3.20988 7.23525 7.16988 5.90525L15.6599 3.07525C17.7799 2.36525 19.5499 2.57525 20.6399 3.65525C21.7299 4.73525 21.9399 6.51525 21.2299 8.63525L18.3999 17.1252C17.0699 21.1052 15.3999 21.9352 14.2199 21.9352Z" fill="white"></path>
                   <path d="M10.11 14.7052C9.92005 14.7052 9.73005 14.6352 9.58005 14.4852C9.29005 14.1952 9.29005 13.7152 9.58005 13.4252L13.16 9.83518C13.45 9.54518 13.93 9.54518 14.22 9.83518C14.51 10.1252 14.51 10.6052 14.22 10.8952L10.64 14.4852C10.5 14.6352 10.3 14.7052 10.11 14.7052Z" fill="white"></path>
