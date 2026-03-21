@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import "./header.css";
 
-const sections = ['home', 'about', 'skills', 'certifications', 'qualification', 'projects', 'contact'];
+const sections = ['home', 'about', 'skills', 'qualification', 'projects', 'certifications', 'contact'];
 
 const Header = () => {
   // ── Scroll-shadow ──
@@ -60,10 +60,10 @@ const Header = () => {
             {[
               { href: '#home',          icon: 'uil-estate',        label: 'Home' },
               { href: '#about',         icon: 'uil-user',          label: 'About' },
-              { href: '#skills',        icon: 'uil-file-alt',      label: 'Skills' },
+              { href: '#skills',         icon: 'uil-file-alt',      label: 'Skills' },
+              { href: '#qualification',  icon: 'uil-scenery',       label: 'Journey' },
+              { href: '#projects',       icon: 'uil-briefcase-alt', label: 'Projects' },
               { href: '#certifications', icon: 'uil-award',         label: 'Certs' },
-      { href: '#qualification', icon: 'uil-scenery',       label: 'Journey' },
-              { href: '#projects',      icon: 'uil-briefcase-alt', label: 'Projects' },
               { href: '#contact',       icon: 'uil-message',       label: 'Contact' },
             ].map(({ href, icon, label }) => (
               <li className='nav__item' key={href}>

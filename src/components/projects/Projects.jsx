@@ -2,54 +2,68 @@ import React, { useState } from 'react';
 import './projects.css';
 import useScrollReveal from '../../hooks/useScrollReveal';
 
-const categories = ['All', 'Web', 'Mobile', 'Cloud'];
+const categories = ['All', 'Web', 'AI', 'Cloud'];
 
 const projectsData = [
   {
     id: 1,
-    filename: 'classroom-manager.java',
-    title: 'Classroom Manager',
+    filename: 'insidetracker.py',
+    title: 'InsideTracker',
     category: 'Web',
-    description: 'A web app to manage students in a class with Spring Boot backend and Angular frontend.',
-    tech: ['Angular', 'Spring Boot', 'MySQL'],
-    github: 'https://github.com/PRADEEPSINHCHAVDA',
+    description:
+      "Real-time financial data platform with 15s refresh cycles, WebSocket sync, and distributed workers for 109+ companies' SEC filings.",
+    tech: ['FastAPI', 'React', 'Redis', 'Celery', 'PostgreSQL'],
+    github: 'https://github.com/PRADEEPSINHCHAVDA/InsideTracker',
   },
   {
     id: 2,
-    filename: 'ecommerce-app.js',
-    title: 'E-Commerce Platform',
-    category: 'Web',
-    description: 'Full-stack e-commerce application with product listings, cart, and payment integration.',
-    tech: ['React', 'Node.js', 'MongoDB'],
-    github: 'https://github.com/PRADEEPSINHCHAVDA',
+    filename: 'debugr.tsx',
+    title: 'Debugr',
+    category: 'AI',
+    description:
+      'RAG-based DevOps assistant — 500+ pages indexed, 30% retrieval gain, 65% prompt precision boost at under 2s p99.',
+    tech: ['LangChain', 'ChromaDB', 'FastAPI', 'AWS Lambda', 'React'],
+    github: 'https://github.com/PRADEEPSINHCHAVDA/Debugr',
   },
   {
     id: 3,
-    filename: 'cloud-dashboard.py',
-    title: 'Cloud Dashboard',
+    filename: 'cloud-infra-pipeline.tf',
+    title: 'Cloud Infra Automation',
     category: 'Cloud',
-    description: 'AWS-based cloud monitoring dashboard with real-time metrics and alerting system.',
-    tech: ['AWS', 'Python', 'React'],
-    github: 'https://github.com/PRADEEPSINHCHAVDA',
+    description:
+      'GitOps pipeline for multi-env AWS infra (VPC, EKS, RDS) with Terraform, OIDC auth, and Checkov — 85% fewer deploy errors.',
+    tech: ['Terraform', 'AWS EKS', 'GitHub Actions', 'Checkov', 'Datadog'],
+    github: 'https://github.com/PRADEEPSINHCHAVDA/cloud-infra-automation-pipeline',
   },
   {
     id: 4,
-    filename: 'mobile-app.dart',
-    title: 'Flutter Mobile App',
-    category: 'Mobile',
-    description: 'Cross-platform mobile application built with Flutter for Android and iOS.',
-    tech: ['Flutter', 'Dart', 'Firebase'],
-    github: 'https://github.com/PRADEEPSINHCHAVDA',
+    filename: 'log-analytics.py',
+    title: 'Intelligent Log Analytics',
+    category: 'Cloud',
+    description:
+      'Kafka → Lambda → OpenSearch pipeline for 2GB+ daily logs — 52% faster debugging, 73% cost reduction across 8 microservices.',
+    tech: ['Apache Kafka', 'AWS Lambda', 'OpenSearch', 'Python', 'CloudWatch'],
+    github: 'https://github.com/PRADEEPSINHCHAVDA/intelligent-log-analytics',
   },
   {
     id: 5,
-    filename: 'portfolio.jsx',
-    title: 'Portfolio Website',
-    category: 'Web',
-    description: 'Personal portfolio site built with React showcasing skills, experience and projects.',
-    tech: ['React', 'CSS3', 'EmailJS'],
-    github: 'https://github.com/PRADEEPSINHCHAVDA',
-    demo: 'https://pradeepsinh-portfolio.vercel.app/',
+    filename: 'azure-voting.yaml',
+    title: 'Azure Voting Microservices',
+    category: 'Cloud',
+    description:
+      'Cloud-native voting app deployed on AKS with containerized microservices and automated CI/CD pipelines.',
+    tech: ['Azure', 'Kubernetes', 'Docker', 'AKS'],
+    github: 'https://github.com/PRADEEPSINHCHAVDA/azure-voting-microservices',
+  },
+  {
+    id: 6,
+    filename: 'edge-cloud.tf',
+    title: 'Edge-to-Cloud Infrastructure',
+    category: 'Cloud',
+    description:
+      'End-to-end IaC bridging edge and cloud for seamless distributed data flow and processing.',
+    tech: ['Terraform', 'AWS', 'Edge Computing', 'IaC'],
+    github: 'https://github.com/PRADEEPSINHCHAVDA/Edge-to-Cloud-Infrastructure',
   },
 ];
 
@@ -57,9 +71,10 @@ const Projects = () => {
   const [active, setActive] = useState('All');
   const filtersRef = useScrollReveal();
 
-  const filtered = active === 'All'
-    ? projectsData
-    : projectsData.filter(p => p.category === active);
+  const filtered =
+    active === 'All'
+      ? projectsData
+      : projectsData.filter(p => p.category === active);
 
   return (
     <section className="projects section" id="projects">
@@ -79,7 +94,9 @@ const Projects = () => {
       </div>
 
       <div className="projects__container container grid">
-        {filtered.map(p => <ProjectCard key={p.id} {...p} />)}
+        {filtered.map(p => (
+          <ProjectCard key={p.id} {...p} />
+        ))}
       </div>
     </section>
   );
@@ -89,7 +106,6 @@ const ProjectCard = ({ filename, title, description, tech, github, demo }) => {
   const ref = useScrollReveal();
   return (
     <div ref={ref} className="terminal reveal">
-      {/* Title bar */}
       <div className="terminal__bar">
         <div className="terminal__dots">
           <span className="terminal__dot terminal__dot--red"></span>
@@ -99,7 +115,6 @@ const ProjectCard = ({ filename, title, description, tech, github, demo }) => {
         <span className="terminal__filename">{filename}</span>
       </div>
 
-      {/* Body */}
       <div className="terminal__body">
         <p className="terminal__prompt">
           <span className="terminal__user">pradeep</span>
@@ -114,7 +129,8 @@ const ProjectCard = ({ filename, title, description, tech, github, demo }) => {
         <div className="terminal__tags">
           {tech.map(t => (
             <span key={t} className="terminal__tag">
-              <span className="terminal__hash">#</span>{t}
+              <span className="terminal__hash">#</span>
+              {t}
             </span>
           ))}
         </div>

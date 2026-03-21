@@ -32,12 +32,12 @@ function App() {
         <WaveDivider fill="var(--body-color)" bg="var(--container-color)" />
         <Skills />
         <WaveDivider fill="var(--container-color)" />
-        <Certifications />
-        <WaveDivider fill="var(--body-color)" bg="var(--container-color)" />
         <Qualification />
         <WaveDivider fill="var(--body-color)" bg="var(--container-color)" />
         <Projects />
         <WaveDivider fill="var(--container-color)" />
+        <Certifications />
+        <WaveDivider fill="var(--body-color)" bg="var(--container-color)" />
         <Contact />
       </main>
       <Footer />
