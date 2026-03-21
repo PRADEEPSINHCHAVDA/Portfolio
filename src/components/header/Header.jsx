@@ -51,7 +51,9 @@ const Header = () => {
   return (
     <header className='header'>
       <nav className='nav container'>
-        <a href="#home" className='nav__logo'>Pradeepsinh</a>
+        <a href="#home" className='nav__logo'>
+          <span className="nav__logo-badge">PC</span>
+        </a>
 
         <div className={Toggle ? "nav__menu show-menu" : "nav__menu"}>
           <ul className='nav__list grid'>

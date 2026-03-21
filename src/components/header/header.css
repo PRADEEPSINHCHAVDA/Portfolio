@@ -24,14 +24,32 @@
 }
 
 .nav__logo {
-  font-weight: var(--font-semi-bold);
-  font-size: var(--h3-font-size);
-  background: var(--gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
 }
+
+.nav__logo-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--gradient);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-family: var(--body-font);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(99, 73, 233, 0.35);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.nav__logo:hover .nav__logo-badge {
+  transform: rotate(-6deg) scale(1.08);
+  box-shadow: 0 6px 18px rgba(99, 73, 233, 0.45);
+}
+
 
 .nav__toggle {
   color: var(--title-color);
