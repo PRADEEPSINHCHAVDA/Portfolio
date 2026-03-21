@@ -65,10 +65,23 @@ const CertCard = ({ title, subtitle, issuer, date, badge, verify }) => {
   const ref = useScrollReveal();
   const isExpiry = date.startsWith('Expires');
 
+  const handleImgError = (e) => {
+    e.target.style.display = 'none';
+    e.target.nextSibling.style.display = 'flex';
+  };
+
   return (
     <div ref={ref} className="cert__card reveal">
       <div className="cert__badge-wrap">
-        <img src={badge} alt={`${title} ${subtitle}`} className="cert__badge-img" />
+        <img
+          src={badge}
+          alt={`${title} ${subtitle}`}
+          className="cert__badge-img"
+          onError={handleImgError}
+        />
+        <div className="cert__badge-fallback" style={{ display: 'none' }}>
+          <i className="bx bxl-aws cert__fallback-icon"></i>
+        </div>
       </div>
       <div className="cert__info">
         <h3 className="cert__title">{title}</h3>

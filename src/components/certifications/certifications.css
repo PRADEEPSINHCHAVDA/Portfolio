@@ -65,6 +65,24 @@
   filter: drop-shadow(0 8px 20px rgba(99, 73, 233, 0.35));
 }
 
+/* Fallback when image fails to load */
+.cert__badge-fallback {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: var(--accent-light);
+  border: 2px solid rgba(99, 73, 233, 0.2);
+  align-items: center;
+  justify-content: center;
+}
+.cert__fallback-icon {
+  font-size: 2.5rem;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 /* Text */
 .cert__info {
   display: flex;
