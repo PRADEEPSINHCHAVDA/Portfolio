@@ -1,68 +1,111 @@
+/* ===== Loader Overlay ===== */
 .loader {
   position: fixed;
   inset: 0;
-  background: hsl(240, 12%, 8%);
+  background: #0b0f1a;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
+  transition: opacity 0.45s ease, visibility 0.45s ease;
 }
-
 .loader--hide {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
 }
 
+/* ===== Content block ===== */
 .loader__content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 0.75rem;
+  text-align: center;
 }
 
-/* Big initials */
+/* ===== Name ===== */
 .loader__name {
-  font-size: 4rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
   font-weight: 700;
-  font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, hsl(243, 75%, 59%), hsl(268, 75%, 60%));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  letter-spacing: -2px;
-  animation: pulse-name 1.4s ease-in-out infinite alternate;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+  margin: 0;
+  animation: name-enter 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
-@keyframes pulse-name {
-  from { opacity: 0.7; transform: scale(0.97); }
-  to   { opacity: 1;   transform: scale(1.03); }
+@keyframes name-enter {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Progress bar */
-.loader__bar {
-  width: 160px;
-  height: 3px;
-  background: rgba(255,255,255,0.1);
+/* ===== Subtitle row ===== */
+.loader__sub {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.loader__sub--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.loader__title {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
+  font-weight: 400;
+  color: #94a3b8;
+  letter-spacing: 0.02em;
+}
+
+.loader__sep {
+  color: #334155;
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
+/* ===== Cycling word ===== */
+.loader__word {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
+  font-weight: 600;
+  color: #22d3ee;
+  letter-spacing: 0.03em;
+  transition: opacity 0.08s ease, transform 0.08s ease;
+  display: inline-block;
+  min-width: 110px;
+  text-align: left;
+}
+.loader__word--flip {
+  opacity: 0;
+  transform: translateY(-4px);
+}
+
+/* ===== Progress bar ===== */
+.loader__bar-wrap {
+  width: 180px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.07);
   border-radius: 99px;
   overflow: hidden;
+  margin-top: 0.25rem;
+  opacity: 0;
+  transition: opacity 0.4s ease 0.1s;
+}
+.loader__bar-wrap--visible {
+  opacity: 1;
 }
 .loader__bar-fill {
   height: 100%;
-  background: linear-gradient(135deg, hsl(243, 75%, 59%), hsl(268, 75%, 60%));
+  width: 0%;
   border-radius: 99px;
-  animation: bar-load 1.4s ease-in-out forwards;
+  background: linear-gradient(90deg, #22d3ee, #6349e9);
+  animation: bar-load 1.1s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards;
 }
 @keyframes bar-load {
   from { width: 0%; }
   to   { width: 100%; }
-}
-
-/* Subtitle */
-.loader__text {
-  font-family: "Poppins", sans-serif;
-  font-size: 0.8rem;
-  color: hsl(0, 0%, 55%);
-  letter-spacing: 2px;
-  text-transform: uppercase;
 }

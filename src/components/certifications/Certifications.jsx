@@ -9,7 +9,7 @@ const certs = [
     issuer: 'Amazon Web Services',
     date: 'Expires Feb 6, 2028',
     badge: 'https://images.credly.com/size/340x340/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png',
-    verify: 'https://www.credly.com/org/amazon-web-services/badge/aws-certified-solutions-architect-associate',
+    verify: 'https://www.credly.com/earner/earned/badge/7d23fbd5-1c9b-4c6b-b94d-58d8db3502c7',
   },
   {
     title: 'AWS Certified Cloud Practitioner',
@@ -17,7 +17,7 @@ const certs = [
     issuer: 'Amazon Web Services',
     date: 'Expires Feb 6, 2028',
     badge: 'https://images.credly.com/size/340x340/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png',
-    verify: 'https://www.credly.com/org/amazon-web-services/badge/aws-certified-cloud-practitioner',
+    verify: 'https://www.credly.com/earner/earned/badge/09256b04-4ef7-47c4-b409-f83857364314',
   },
   {
     title: 'AWS Academy Graduate',
@@ -25,7 +25,7 @@ const certs = [
     issuer: 'AWS Academy',
     date: 'Issued Dec 8, 2025',
     badge: 'https://images.credly.com/images/fcafd0c9-42da-4703-a191-0c397203dc1b/blob',
-    verify: 'https://www.credly.com/org/amazon-web-services/badge/aws-academy-graduate-aws-academy-cloud-architecting',
+    verify: 'https://www.credly.com/earner/earned/badge/df9f3be1-1028-44e6-9bec-e4ae09c1a539',
   },
   {
     title: 'AWS Academy Graduate',
@@ -33,7 +33,7 @@ const certs = [
     issuer: 'AWS Academy',
     date: 'Issued Oct 29, 2025',
     badge: 'https://images.credly.com/images/43f26cf1-0b54-41a3-9fa5-3d2f02fa5040/blob',
-    verify: 'https://www.credly.com/org/amazon-web-services/badge/aws-academy-graduate-aws-academy-cloud-data-pipeline-builder',
+    verify: 'https://www.credly.com/earner/earned/badge/592e1a1c-1b7c-4aa8-b37d-a6b25e6c98f3',
   },
   {
     title: 'AWS Academy Graduate',
@@ -41,7 +41,7 @@ const certs = [
     issuer: 'AWS Academy',
     date: 'Issued Oct 30, 2025',
     badge: 'https://images.credly.com/images/6ff76b93-852c-4f9e-a73a-fc10424a1007/blob',
-    verify: 'https://www.credly.com/org/amazon-web-services/badge/aws-academy-graduate-microservices-and-ci-cd-pipeline-builder',
+    verify: 'https://www.credly.com/earner/earned/badge/9ca6d770-b072-4d09-9943-b2e6c53ce981',
   },
   {
     title: 'AWS Knowledge',
@@ -49,7 +49,7 @@ const certs = [
     issuer: 'Amazon Web Services',
     date: 'Issued Nov 7, 2025',
     badge: 'https://images.credly.com/images/e1c202b1-bca1-469a-9149-127b4fe891d7/blob',
-    verify: 'https://www.credly.com/org/amazon-web-services/badge/aws-knowledge-networking-core',
+    verify: 'https://www.credly.com/earner/earned/badge/751a35aa-239d-4c8d-9d55-2658f9a416c0',
   },
   {
     title: 'Introduction to GitOps',
@@ -57,7 +57,7 @@ const certs = [
     issuer: 'The Linux Foundation',
     date: 'Issued Oct 4, 2025',
     badge: 'https://images.credly.com/images/032a65da-a036-4d05-ad80-8fc1274363ab/blob',
-    verify: 'https://www.credly.com/org/the-linux-foundation/badge/lfs169-introduction-to-gitops',
+    verify: 'https://www.credly.com/earner/earned/badge/e304264c-1e91-4087-b0b8-dba253980bd4',
   },
 ];
 

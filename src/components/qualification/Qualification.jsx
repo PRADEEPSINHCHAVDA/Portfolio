@@ -48,10 +48,10 @@ const Qualification = () => {
                     <div className="qualification__data">
                         <div>
                             <h3 className="qualification__title">Software Engineer</h3>
-                            <span className="qualification__subititle">APS Three.ai Pvt Ltd</span>
+                            <span className="qualification__subititle">APSThree AI</span>
                             <div className="qualification__calender">
                                 <i className="uil uil-calendar-alt"></i>
-                                Jan 2023 - May 2024
+                                Jan 2022 - May 2024
                             </div>
                         </div>
 
@@ -70,31 +70,17 @@ const Qualification = () => {
 
                         <div>
                             <h3 className="qualification__title">Software Engineer Intern</h3>
-                            <span className="qualification__subititle">MyAlgosoft Technologies</span>
+                            <span className="qualification__subititle">Certopus</span>
                             <div className="qualification__calender">
                                 <i className="uil uil-calendar-alt"></i>
-                                Jan 2023 - May 2023
+                                May 2021 - Aug 2021
                             </div>
                         </div>
 
                        
                     </div>
 
-                    <div className="qualification__data">
-                        <div>
-                            <h3 className="qualification__title">Flutter developer Intern</h3>
-                            <span className="qualification__subititle">DevSquirrel Technologies Pvt Ltd</span>
-                            <div className="qualification__calender">
-                                <i className="uil uil-calendar-alt"></i>
-                                May 2022 - Aug 2022
-                            </div>
-                        </div>
-
-                        <div>
-                            <span className="qualification__rounder"></span>
-                            <span className="qualification__line"></span>
-                        </div>
-                    </div>
+                
 
                     {/* <div className="qualification__data">
                         <div></div>
@@ -129,7 +115,7 @@ const Qualification = () => {
                             <span className="qualification__subititle">Computer Science</span>
                             <div className="qualification__calender">
                                 <i className="uil uil-calendar-alt"></i>
-                                Aug 2024 - Present
+                                Aug 2024 - May 2026
                             </div>
                         </div>
 
@@ -151,7 +137,7 @@ const Qualification = () => {
                             <span className="qualification__subititle">Information Technology</span>
                             <div className="qualification__calender">
                                 <i className="uil uil-calendar-alt"></i>
-                                Jun 2019 - May 2023
+                                Jun 2018 - May 2022
                             </div>
                         </div>
 
