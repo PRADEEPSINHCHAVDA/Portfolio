@@ -51,7 +51,7 @@ const Qualification = () => {
                             <span className="qualification__subititle">APSThree AI</span>
                             <div className="qualification__calender">
                                 <i className="uil uil-calendar-alt"></i>
-                                Jan 2022 - May 2024
+                                Jan 2022 - Jun 2024
                             </div>
                         </div>
 
